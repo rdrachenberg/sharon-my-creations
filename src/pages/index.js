@@ -95,7 +95,7 @@ export async function getStaticProps() {
     expand: ['data.default_price']
   });
 
-  console.log(inventory.data);
+  // console.log(inventory.data);
 
   const products = inventory.data.map(product => {
     const price = product.default_price;
