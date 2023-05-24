@@ -31,9 +31,9 @@ export default function Home({products}) {
   const handleProductTypeSort = () => {
     setTempInventory([...products]);
     handleReset();
-    
-    const filterOne = () => setInventory( inventory => inventory.filter(val => val.description !== null));
-    const filterTwo = () => setInventory(inventory => inventory.filter(val => val.description === null));
+    console.log(inventory)
+    const filterOne = () => setInventory(inventory => inventory.filter(val => val.meta?.type !== 'art'));
+    const filterTwo = () => setInventory(inventory => inventory.filter(val => val.meta?.type === 'art'));
     
     // run conditional function per bool in the toggleThree var
     toggleThree ? 
@@ -95,7 +95,7 @@ export async function getStaticProps() {
     expand: ['data.default_price']
   });
 
-  // console.log(inventory.data);
+  console.log(inventory.data);
 
   const products = inventory.data.map(product => {
     const price = product.default_price;
@@ -108,6 +108,7 @@ export async function getStaticProps() {
       price: price.unit_amount,
       image: product.images[0],
       description: product.description,
+      meta: product.metadata,
     }
   })
 
