@@ -65,7 +65,7 @@ export default function ProductPage({ product }) {
                         </div>
                         
                     </div>
-                    <button onClick={onAddToCart} className='w-full mt-4 border border-lime-500 py-2 px-6 bg-lime-500 hover:bg-lime-600 hover:borderlime-600 focus:ring-4 focus:ring-opacity-50 focus:ring-lime-500 text-white disabled:opacity-50 disable:cursor-not-allowed rounded-md '>
+                    <button onClick={onAddToCart} className='w-full mt-4 border border-lime-500 py-2 px-6 bg-gradient-to-r from-[#25aae1] to-[#30dd8a] focus:ring-4 focus:ring-opacity-50 focus:ring-lime-500 text-white disabled:opacity-50 disable:cursor-not-allowed rounded-md '>
                         Add to cart
                     </button>
                 </div>
