@@ -79,7 +79,8 @@ export default function Home({products}) {
       </div>
       <div className='grid gap-8 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1'>
         {inventory.map((product, index) => {
-          return(<ProductCard key={product.id} product={product} index={index} />)
+          console.log(product)
+          return(<ProductCard key={product.id} product={product} index={index} description={product.description}/>)
           
         })}
         

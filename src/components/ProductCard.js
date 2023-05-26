@@ -21,16 +21,16 @@ export default function ProductCard({ product, index }) {
 
     return (
         <Link 
-        href={`/products/${product.id}`} 
-        className='border-2 rounded-md group overflow-hidden'>
+        href={{pathname: `/products/${product.id}`, query: {description: product.description}}} 
+        className='border border-opacity-50  shadow-lg rounded-md group overflow-hidden  '>
 
         <div className='relative w-full h-64'>
             <Image src={product.image} alt={product.name} priority={index === 0} fill sizes='100%' style={{objectFit: 'contain'}}/>
         </div>
 
         <div className='p-6 bg-white'>
-            <p className='font-semibold text-lg'> {product.name}</p>
-            <Rating />
+            <p className='font-semibold text-lg overflow-hidden truncate'> {product.name}</p>
+            
             <div className='mt-4 flex items-center justify-between space-x-2'>
                 <div>
                     <p className='text-gray-500'>Price</p>
@@ -39,7 +39,7 @@ export default function ProductCard({ product, index }) {
                         value: product.price
                     })}</p>
                 </div>
-                <button onClick={onAddToCart} className='border rounded-lg py1 px-4'>Add to cart</button>
+                <button onClick={onAddToCart} className='border rounded-lg py-1 px-4 bg-gradient-to-r from-[#25aae1] to-[#30dd8a] text-cyan-50 hover:drop-shadow-xl' >Add to cart</button>
             </div>
         </div>
 

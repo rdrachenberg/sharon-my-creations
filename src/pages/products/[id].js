@@ -7,9 +7,15 @@ import { toast } from "react-hot-toast";
 
 export default function ProductPage({ product }) {  
     // console.log(product);
+    
     const [count, setCount] = useState(1);
 
     const { addItem } = useShoppingCart();
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+
+    const description = params.description;
 
     function onAddToCart(e) {
         e.preventDefault()
@@ -17,7 +23,7 @@ export default function ProductPage({ product }) {
         addItem(product, { count });
         toast.success(`${count} ${product.name} added`, {id})
     }
-
+    console.log(product)
     return( 
         <div className='container lg:max-w-screen-lg mx-auto py-12 px-6 '>
             <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12'>
@@ -26,7 +32,8 @@ export default function ProductPage({ product }) {
                     
                 </div>
                 <div className='w-full flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 bg-slate-300'>
-                    <h2 className='text-3wl font-semibold'>{product.name}</h2>
+                    <h2 className='text-xl font-semibold'>{product.name}</h2>
+                    <h3 className='text-sm font-semibold'>{description}</h3>
                     <p className='pt-2 flex items-center space-x-2'>
                         <CheckIcon className='text-lime-500 w-5 h-5'/>
                         <span className='font-semibold'>In stock</span>
