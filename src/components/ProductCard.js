@@ -39,7 +39,7 @@ export default function ProductCard({ product, index }) {
                         value: product.price
                     })}</p>
                 </div>
-                <button onClick={onAddToCart} className='border rounded-lg py-1 px-4 bg-gradient-to-r from-[#25aae1] to-[#30dd8a] text-cyan-50 hover:drop-shadow-xl' >Add to cart</button>
+                <button onClick={onAddToCart} className='border rounded-lg py-1 px-4 transition bg-[length:300%_100%] bg-gradient-to-l from-[#25aae1] to-[#30dd8a] text-white hover:drop-shadow-xl hover:border-yellow-500 hover:bg-gradient-to-r from-[#30dd8a] to-[#25aae1] hover:[100%_0%]' >Add to cart</button>
             </div>
         </div>
 
