@@ -4,6 +4,7 @@ import { useState } from "react";
 import { stripe } from "src/utils/stripe";
 import { formatCurrencyString, useShoppingCart} from "use-shopping-cart";
 import { toast } from "react-hot-toast";
+import Zoom from 'react-img-hover-zoom'
 
 export default function ProductPage({ product }) {  
     // console.log(product);
@@ -23,12 +24,15 @@ export default function ProductPage({ product }) {
         addItem(product, { count });
         toast.success(`${count} ${product.name} added`, {id})
     }
-    console.log(product)
+    // console.log(product);
+    // {/* <Image src={product.image} alt={product.name} fill style={{objectFit: 'contain'}} sizes='100%' priority/> */}
     return( 
         <div className='container lg:max-w-screen-lg mx-auto py-12 px-6 '>
-            <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12'>
-                <div className='relative w-72 h-72 sm:w-96 sm:h-96'>
-                    <Image src={product.image} alt={product.name} fill style={{objectFit: 'contain'}} sizes='100%' priority/>
+            <div className='flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0 md:space-x-12'>
+                <div className=''>
+                    
+                    <Zoom className={'relative w-72 h-72 sm:w-96 sm:h-96 sm:max-w-[`300px`] flex-row rounded-2xl'} priority img={product.image} zoomScale={3} width={400} height={350} alt={product.name} style={{position: 'relative'}} transitionTime={0.5}/>
+                    
                     
                 </div>
                 <div className='w-full flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 bg-slate-300'>
@@ -61,7 +65,7 @@ export default function ProductPage({ product }) {
                         </div>
                         
                     </div>
-                    <button onClick={onAddToCart} className='w-full mt-4 border border-lime-500 py-2 px-6 bg-gradient-to-l from-[#25aae1] to-[#30dd8a] text-white hover:borderlime-600 focus:ring-4 focus:ring-opacity-50 focus:ring-lime-500 text-white disabled:opacity-50 disable:cursor-not-allowed rounded-md '>
+                    <button onClick={onAddToCart} className='w-full mt-4 border border-lime-500 py-2 px-6 bg-lime-500 hover:bg-lime-600 hover:borderlime-600 focus:ring-4 focus:ring-opacity-50 focus:ring-lime-500 text-white disabled:opacity-50 disable:cursor-not-allowed rounded-md '>
                         Add to cart
                     </button>
                 </div>

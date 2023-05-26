@@ -3,6 +3,7 @@ import { stripe } from 'src/utils/stripe';
 import ProductCard from 'src/components/ProductCard';
 import { ChevronUpDownIcon, XMarkIcon, PowerIcon} from '@heroicons/react/24/solid'
 import { CurrencyDollarIcon, Square2StackIcon } from '@heroicons/react/24/outline'
+import {HiOutlineRefresh}  from 'react-icons/hi'
 
 
 export default function Home({products}) {
@@ -74,7 +75,7 @@ export default function Home({products}) {
         </div>
         <div className='flex flex-col p-1'>
         <p className='text-center' style={{fontSize: '10px'}}>reset</p>
-          <PowerIcon onClick={handleReset} className='w-6 h-6'/>
+          <HiOutlineRefresh onClick={handleReset} className='w-6 h-6'/>
         </div>
       </div>
       <div className='grid gap-8 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1'>
