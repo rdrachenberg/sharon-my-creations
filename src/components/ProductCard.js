@@ -25,7 +25,7 @@ export default function ProductCard({ product, index }) {
         className='border border-opacity-50  shadow-lg rounded-md group overflow-hidden  '>
 
         <div className='relative w-full h-64'>
-            <Image src={product.image} alt={product.name} priority={index === 0} fill sizes='100%' style={{objectFit: 'contain'}}/>
+            <Image src={product.image} alt={product.name} priority={index === 0} fill sizes='25%' style={{objectFit: 'cover'}}/>
         </div>
 
         <div className='p-6 bg-white'>
