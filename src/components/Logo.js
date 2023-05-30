@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Logo() {
     return (
         <Link href={'/'} className='flex items-center space-x-2'>
-            <Image src='/logo.png?v=1' width={110} height={110} style={{borderRadius:'10px', border: '1px solid'}} alt="Sharon My Creations logo" />
+            <Image src='/logo.png?v=1' width={100} height={100} style={{borderRadius:'10px', border: '1px solid'}} alt="Sharon My Creations logo" />
             <span className='hidden sm:inline-block font-extrabold text-3xl text-gray-700'>
                 Sharon My Creations
             </span>
