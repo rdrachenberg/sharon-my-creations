@@ -57,11 +57,19 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                     
                     <Image src={product.image} alt={product.name} fill style={imageStyles} sizes='100%' priority
                         onMouseEnter={(e) => {
-                            const elem = e.currentTarget;
-                            const { width, height } = elem.getBoundingClientRect();
-                            setSize([width, height]);
-                            setShowMagnifier(true);
-                            console.log(width)
+                            if(smallScreen) {
+                                const elem = e.currentTarget;
+                                const { width, height } = elem.getBoundingClientRect();
+                                setSize([width, height]);
+                                setShowMagnifier(true);
+                                
+                            } else {
+                                const elem = e.currentTarget;
+                                const { width, height } = elem.getBoundingClientRect();
+                                setSize([width, height]);
+                                setShowMagnifier(true);
+                                console.log(width)
+                            }
                             
                         }}
                         onMouseMove={(e) => {
@@ -73,7 +81,6 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                             setXY([x, y]);
                         }}
                         onMouseLeave={() => {
-                           
                             setShowMagnifier(false);
                         }}  
                     />

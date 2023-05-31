@@ -57,8 +57,8 @@ export default function CartPage() {
                     <p className='mt-1 text-xl'>
                         Checkout our fantastic products{' '}
                         <Link href='/' className='text-red-500 underline'>
-                        here!
-                    </Link>
+                            here!
+                        </Link>
                     </p>
                 </>
             )}
@@ -76,6 +76,15 @@ export default function CartPage() {
                         <button onClick={onCheckout} disabled={isRedirecting} className='border rounded py-2 px-6 bg-yellow-500 hover:bg-yellow-600 border-yellow-500 hover:border-yellow-600 focus:rin-4 focus:ring-opacity-50 focus:ring-yellow-500 text-white transition-colors disabled:curser-not-allowed disabled:hover:bg-yellow-500 mt-4 mx-w-max '>
                             {isRedirecting ? 'Redirecting... -->':'Go to checkout'}
                         </button>
+                        <br />
+                        {cartCount > 0 ? 
+                            <Link href='/' className='text-blue-500 underline'>
+                                Keep shopping
+                            </Link>
+                        : 
+                            <></>
+                        }
+                        
                     </div>
                 </div>
             )}
