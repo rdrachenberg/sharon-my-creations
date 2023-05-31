@@ -4,29 +4,23 @@ import { useState } from "react";
 import { stripe } from "src/utils/stripe";
 import { formatCurrencyString, useShoppingCart} from "use-shopping-cart";
 import { toast } from "react-hot-toast";
-import ReactImageMagnify from 'react-image-magnify'
 
 
-export default function ProductPage({ product }) {  
+export default function ProductPage({ product, src= '', width= '', height= '', magnifierHeight = 150, magnifieWidth = 150, zoomLevel = 2 }) {  
     // console.log(product);
-    const imageBaseUrl = product.image;
-    console.log(imageBaseUrl);
-    const sizes = [ "355","481","584","687","770","861","955","1033","1112","1192","1200"];
-
+    
     const [count, setCount] = useState(1);
+    const [showMagnifier, setShowMagnifier] = useState(false);
+
+    const [[x,y], setXY] = useState([0,0]);
+    const [[imgWidth, imgHeight], setSize] = useState([0,0]);
 
     const { addItem } = useShoppingCart();
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
-    
-    const description = params.description;
 
-    const srcSet = () => {
-        sizes.forEach((i) => {
-            return `${imageBaseUrl}/w_${i},c_scale`
-        })
-    }
+    const description = params.description;
 
     function onAddToCart(e) {
         e.preventDefault()
@@ -35,48 +29,60 @@ export default function ProductPage({ product }) {
         toast.success(`${count} ${product.name} added`, {id})
     }
     // console.log(product);
-    // <Image src={product.image} alt={product.name} fill style={{objectFit: 'contain'}} sizes='100%' priority/>
+
+    const imageStyles = {
+        
+        objectFit: 'fill',
+        width: width
+        
+    }
     return( 
         <div className='container lg:max-w-screen-lg mx-auto py-12 px-6 '>
             <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12'>
-                <div className='image relative w-72 h-72 sm:w-96 sm:h-96 '>
-                    
-                    <ReactImageMagnify 
-                        {...{
-                            smallImage: {
-                                alt: product.name,
-                                isFluidWidth: true,
-                                src: product.image,
-                                srcSet,
-                                sizes: '(min-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px'
-                            }, 
-                            largeImage: {
-                                alt: product.name,
-                                src: product.image,
-                                width: 850,
-                                height: 850
-                            }, 
-                            isHintEnabled: true,
-                            // enlargedImageContainerClassName: 'image',
-                            shouldUsePositiveSpaceLens: true,
-                            enlargedImageContainerDimensions: {
-                                width: '200%',
-                                height: '100%'
-                            },
-                            isEnlargedImagePortalEnabledForTouch: false,
-                            enlargedImageStyle: {
-                                maxWidth: '640px',
-                                objectFit:'contain'
-                            }
-                            // enlargedImagePortalId: 'texter'
+                <div className='relative w-72 h-72 sm:w-96 sm:h-96'>
+                    <Image src={product.image} alt={product.name} fill style={imageStyles} sizes='100%' priority
+                        onMouseEnter={(e) => {
+                            const elem = e.currentTarget;
+                            const { width, height } = elem.getBoundingClientRect();
+                            setSize([width, height]);
+                            setShowMagnifier(true);
+                            console.log(width)
                             
-                            
-                        }} className='relative w-72 h-72 sm:w-96 sm:h-96 sm:hover:flex sm:hover:absolute' style={{objectFit: 'contain'}} sizes='100%' priority
-                    />
+                        }}
+                        onMouseMove={(e) => {
+                            const elem = e.currentTarget;
+                            const { top, left } = elem.getBoundingClientRect();
 
-                    {/* <Image src={product.image} alt={product.name} fill style={{objectFit: 'contain'}} sizes='100%' priority/> */}
+                            const x = e.pageX - left - window.scrollX;
+                            const y = e.pageY - top - window.scrollY;
+                            setXY([x, y]);
+                        }}
+                        onMouseLeave={() => {
+                           
+                            setShowMagnifier(false);
+                        }}  
+                    />
+                    <div className='magnifier' lazyLoad={true} style={{display: showMagnifier ? '' : 'none', 
+                        position: 'absolute',
+                        pointerEvents: 'none',
+                        height: `${magnifierHeight}px`,
+                        width: `${magnifieWidth}px`,
+                        top: `${y - magnifierHeight / 2}px`,
+                        left: `${x - magnifieWidth / 2}px`,
+                        opacity: '1',
+                        border: '1px solid lightgray',
+                        backgroundColor: 'white',
+                        backgroundImage: `url(${product.image})`,
+                        backgroundRepeat: 'no-repeat',
+
+                        backgroundSize: `${imgWidth * zoomLevel}px ${
+                            imgHeight * zoomLevel
+                        }px`,
+                        backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
+                        backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
+                        }}
+                    ></div>
                 </div>
-                
                 <div className='w-full flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 bg-slate-300'>
                     <h2 className='text-xl font-semibold'>{product.name}</h2>
                     <h3 className='text-sm font-semibold'>{description}</h3>
@@ -152,6 +158,6 @@ export async function getStaticProps({params}) {
     props: {
         product,
     },
-    revalidate: 20,
+    revalidate: 60 * 60,
     }
 }
