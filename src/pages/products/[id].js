@@ -72,7 +72,7 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                         opacity: '1',
                         border: '1px solid lightgray',
                         backgroundColor: 'white',
-                        backgroundImage: `url(${product.image})`,
+                        backgroundImage: `url(${product.image? product.image: null})`,
                         backgroundRepeat: 'no-repeat',
 
                         backgroundSize: `${imgWidth * zoomLevel}px ${
