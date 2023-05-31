@@ -1,6 +1,6 @@
 import { CheckIcon, MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { stripe } from "src/utils/stripe";
 import { formatCurrencyString, useShoppingCart} from "use-shopping-cart";
 import { toast } from "react-hot-toast";
@@ -12,10 +12,13 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
     const [count, setCount] = useState(1);
     const [showMagnifier, setShowMagnifier] = useState(false);
 
+    const [smallScreen, setSmallScreen] = useState(false);
+    const [screenSize, setScreenSize] = useState(window.innerWidth);
     const [[x,y], setXY] = useState([0,0]);
+    
     const [[imgWidth, imgHeight], setSize] = useState([0,0]);
-
     const { addItem } = useShoppingCart();
+    
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
@@ -30,16 +33,28 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
     }
     // console.log(product);
 
-    const imageStyles = {
-        
+    const imageStyles = {    
         objectFit: 'fill',
         width: width
-        
     }
+
+    useEffect(() => {
+      setScreenSize(window.innerWidth);
+      console.log(screenSize);
+      if(screenSize < 640) {
+        setSmallScreen(true);
+        zoomLevel = 3;
+      }
+    
+      
+    }, [])
+    
+
     return( 
         <div className='container lg:max-w-screen-lg mx-auto py-12 px-6 '>
             <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12'>
                 <div className='relative w-72 h-72 sm:w-96 sm:h-96'>
+                    
                     <Image src={product.image} alt={product.name} fill style={imageStyles} sizes='100%' priority
                         onMouseEnter={(e) => {
                             const elem = e.currentTarget;
@@ -62,26 +77,51 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                             setShowMagnifier(false);
                         }}  
                     />
-                    <div className='magnifier' lazyLoad={true} style={{display: showMagnifier ? '' : 'none', 
-                        position: 'absolute',
-                        pointerEvents: 'none',
-                        height: `${magnifierHeight}px`,
-                        width: `${magnifieWidth}px`,
-                        top: `${y - magnifierHeight / 2}px`,
-                        left: `${x - magnifieWidth / 2}px`,
-                        opacity: '1',
-                        border: '1px solid lightgray',
-                        backgroundColor: 'white',
-                        backgroundImage: `url(${product.image? product.image: null})`,
-                        backgroundRepeat: 'no-repeat',
+                    {smallScreen ? 
+                        <div className='magnifier' lazyload={'true'} style={{display: showMagnifier ? '' : 'none', 
+                            position: 'absolute',
+                            pointerEvents: 'none',
+                            height: `${magnifierHeight}px`,
+                            width: `${magnifieWidth}px`,
+                            top: `${y - magnifierHeight / 6}px`,
+                            left: `${x - magnifieWidth / 6}px`,
+                            opacity: '1',
+                            border: '1px solid lightgray',
+                            backgroundColor: 'white',
+                            backgroundImage: `url(${product.image? product.image: null})`,
+                            backgroundRepeat: 'no-repeat',
 
-                        backgroundSize: `${imgWidth * zoomLevel}px ${
-                            imgHeight * zoomLevel
-                        }px`,
-                        backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
-                        backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
-                        }}
-                    ></div>
+                            backgroundSize: `${imgWidth * zoomLevel}px ${
+                                imgHeight * zoomLevel
+                            }px`,
+                            backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 6}px`,
+                            backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 6}px`
+                            }}
+                        ></div>
+                     : 
+                    
+                        <div className='magnifier' lazyload={'true'} style={{display: showMagnifier ? '' : 'none', 
+                            position: 'absolute',
+                            pointerEvents: 'none',
+                            height: `${magnifierHeight}px`,
+                            width: `${magnifieWidth}px`,
+                            top: `${y - magnifierHeight / 2}px`,
+                            left: `${x - magnifieWidth / 2}px`,
+                            opacity: '1',
+                            border: '1px solid lightgray',
+                            backgroundColor: 'white',
+                            backgroundImage: `url(${product.image? product.image: null})`,
+                            backgroundRepeat: 'no-repeat',
+
+                            backgroundSize: `${imgWidth * zoomLevel}px ${
+                                imgHeight * zoomLevel
+                            }px`,
+                            backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
+                            backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
+                            }}
+                        ></div>
+                    }
+                    
                 </div>
                 <div className='w-full flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 bg-slate-300'>
                     <h2 className='text-xl font-semibold'>{product.name}</h2>
