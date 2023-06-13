@@ -40,7 +40,7 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
 
     useEffect(() => {
       setScreenSize(window.innerWidth);
-      console.log(screenSize);
+    //   console.log(screenSize);
       if(screenSize < 640) {
         setSmallScreen(true);
         zoomLevel = 3;
@@ -68,7 +68,7 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                                 const { width, height } = elem.getBoundingClientRect();
                                 setSize([width, height]);
                                 setShowMagnifier(true);
-                                console.log(width)
+                                // console.log(width)
                             }
                             
                         }}
@@ -130,6 +130,7 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                     }
                     
                 </div>
+                
                 <div className='w-full flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 bg-slate-300'>
                     <h2 className='text-xl font-semibold'>{product.name}</h2>
                     <h3 className='text-sm font-semibold'>{description}</h3>
@@ -165,6 +166,12 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                     </button>
                 </div>
             </div>
+            {smallScreen? 
+                <div className='text-slate-600  font-light '>*Tap image to zoom</div>
+            : 
+                <div className='text-slate-600  font-light '>*Hover to zoom</div>
+            }
+            
         </div>
     )
 }
