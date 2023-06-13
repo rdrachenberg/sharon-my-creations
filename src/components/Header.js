@@ -14,12 +14,12 @@ export default function Header() {
                 <Logo />
                 <Link href='/cart' className='flex items-center space-x-1 text-gray-700 hover:text-gray-900'>
                     <div className='relative'>
-                        <ShoppingCartIcon className='w-7 h-7 flex-shrink-0' />
+                        <ShoppingCartIcon className='w-7 h-7 flex-shrink' />
                     </div>
                     <p className='text-lg'>
                         {formattedTotalPrice}{'  '}
                     </p>
-                    <span className='text-sm text-gray-500'>({cartCount})</span>
+                    <span className='hidden md:inline-block text-sm text-gray-500'>({cartCount})</span>
                 </Link>
             </div>
         </header>
