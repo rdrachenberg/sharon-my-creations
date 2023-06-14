@@ -1,4 +1,5 @@
 import ReactPlayer from 'react-player/lazy';
+import { Loader } from 'src/components/Loader';
 
 export default function CreativeProcessPage() {
     
@@ -17,7 +18,7 @@ export default function CreativeProcessPage() {
                     loop={true}
                     muted={true}
                     playing={true}
-                    
+                    fallback={<Loader />}
                 />
             </div>
         </section>
