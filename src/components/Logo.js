@@ -13,9 +13,6 @@ export default function Logo() {
         <Link href={'/about'}>
             <span className='font-semibold lg:text-1xl pl-3 mx-auto my-auto hover:text-[#257fdf] max-md:text-xs'>About</span>
         </Link>
-        <Link href={'/creative'}>
-            <span className='flex-shrink font-semibold lg:text-1xl lg:pl-2 mx-auto my-auto hover:text-[#257fdf] max-md:text-xs sm:text-center sm:pl-0'>Creative Process</span>
-        </Link>
     </div>
     )
 }
