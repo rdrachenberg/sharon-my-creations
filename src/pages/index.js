@@ -57,7 +57,7 @@ export default function Home({products}) {
         </div>
         <div className='flex flex-row m-1 place-items-center rounded z-10'>
           <button className='rounded-lg text-white p-1 w-26' style={{fontSize: '10px'}} onClick={handleHotChixSort}>
-            (HotChix)
+            "HotChix"
           </button>
           <GiChicken onClick={handleHotChixSort} className='w-6 h-6 text-white' />
         </div>

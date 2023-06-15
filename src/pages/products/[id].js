@@ -51,9 +51,15 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
     
 
     return( 
-        <div className='container lg:max-w-screen-lg mx-auto py-12 px-6 '>
+        <div className='container lg:max-w-screen-lg mx-auto py-6 px-6 '>
             <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12'>
+            {smallScreen? 
+                        <div className='text-slate-600 absolute text-xs '>*Tap image to zoom</div>
+                    : 
+                        ''
+                    }
                 <div className='relative w-72 h-72 sm:w-96 sm:h-96'>
+                    
                     
                     <Image src={product.image} alt={product.name} fill style={imageStyles} sizes='100%' priority
                         onMouseEnter={(e) => {
@@ -84,6 +90,7 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                             setShowMagnifier(false);
                         }}  
                     />
+                    
                     {smallScreen ? 
                         <div className='magnifier' lazyload={'true'} style={{display: showMagnifier ? '' : 'none', 
                             position: 'absolute',
@@ -167,10 +174,11 @@ export default function ProductPage({ product, src= '', width= '', height= '', m
                 </div>
             </div>
             {smallScreen? 
-                <div className='text-slate-600  font-light '>*Tap image to zoom</div>
+                ''
             : 
                 <div className='text-slate-600  font-light '>*Hover to zoom</div>
             }
+            
             
         </div>
     )
