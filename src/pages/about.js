@@ -1,15 +1,22 @@
 import ReactPlayer from 'react-player/lazy';
+import Image from 'next/image';
 
 export default function AboutPage() {
     return (
         
             
         <div className='container xl:max-w-screen-xl mx-auto py-12 px-6 justify-between'>
-        <div className='flex flex-row '>
-            <div className='text-xl font-semibold text-gray-600'>Sharon bio placeholder here</div> 
-        </div>
+        
         <section className='flex flex-row m-2 mb-9 justify-even flex-wrap lg:flex-nowrap'>
-            
+            <div className='overflow-hidden'>
+                <Image 
+                    src='/sharon.png'
+                    width={185}
+                    height={185}
+                    className='border rounded-lg shadow-xl'
+                />    
+            </div>
+            <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
         </section>
         <div className='flex flex-row '>
             <div className='text-xl font-semibold text-gray-600'>Creative Process</div> 
