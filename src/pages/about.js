@@ -6,7 +6,7 @@ export default function AboutPage() {
             
         <div className='container xl:max-w-screen-xl mx-auto py-12 px-6 justify-between'>
         <div className='flex flex-row '>
-            <div className='text-xl font-semibold text-gray-600'>About Me</div> 
+            <div className='text-xl font-semibold text-gray-600'>Sharon bio placeholder here</div> 
         </div>
         <section className='flex flex-row m-2 mb-9 justify-even flex-wrap lg:flex-nowrap'>
             
