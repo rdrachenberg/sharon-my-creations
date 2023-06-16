@@ -16,7 +16,7 @@ export default function AboutPage() {
                     className='border rounded-lg shadow-xl'
                 />    
             </div>
-            <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+            <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>Hello, I’m Sharon. I am now retired and finally doing what I love - my Artwork. When I’m not holding a martini, I’m holding a paintbrush. Sharon My Creations is a collection of my original artwork of paintings, sculptures and more.</p>
         </section>
         <div className='flex flex-row '>
             <div className='text-xl font-semibold text-gray-600'>Creative Process</div> 
