@@ -48,7 +48,7 @@ export default function Home({products}) {
 
   return (
     <div className='container xl:max-w-screen-xl mx-auto py-1 px-6'>
-      <div className='flex flex-row flex-grow mb-7 lg:place-content-end bg-[#FCF41B] rounded pr-3 z-0 opacity-90 justify-between'>
+      <div className='flex flex-row flex-grow mb-7 lg:place-content-end bg-gradient-to-r from-yellow-100 via-yellow-300 to-[#FCF41B] rounded pr-3 z-0 opacity-90 justify-between'>
         <div className='flex flex-row m-1 place-items-center rounded z-10'>
           <button className=' rounded-lg text-black p-1 w-26' style={{fontSize: '10px'}} onClick={handleArtSort}>
             Graphic Arts
