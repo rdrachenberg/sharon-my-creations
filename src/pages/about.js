@@ -1,4 +1,4 @@
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player';
 import Image from 'next/image';
 
 export default function AboutPage() {
@@ -8,12 +8,13 @@ export default function AboutPage() {
                 <div className='overflow-hidden'>
                     <Image 
                         src='/sharon.png'
+                        alt='sharons profile pic'
                         width={185}
                         height={185}
                         className='border rounded-lg shadow-xl'
                     />    
                 </div>
-                <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>Hello, I’m Sharon. I am now retired and finally doing what I love - my Artwork. When I’m not holding a martini, I’m holding a paintbrush. Sharon My Creations is a collection of my original artwork of paintings, sculptures and more.</p>
+                <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>Hello, I{`'`}m Sharon. I am now retired and finally doing what I love - my Artwork. When I’m not holding a martini, I’m holding a paintbrush. Sharon My Creations is a collection of my original artwork of paintings, sculptures and more.</p>
             </section>
             <div className='flex flex-row '>
                 <div className='text-xl font-semibold text-gray-600'>Creative Process</div> 
