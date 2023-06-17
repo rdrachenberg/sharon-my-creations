@@ -48,30 +48,30 @@ export default function Home({products}) {
 
   return (
     <div className='container xl:max-w-screen-xl mx-auto py-1 px-6'>
-      <div className='flex flex-row flex-grow mb-7 lg:place-content-end bg-gray-600 rounded pr-3 z-0 opacity-90 justify-between'>
+      <div className='flex flex-row flex-grow mb-7 lg:place-content-end bg-[#FCF41B] rounded pr-3 z-0 opacity-90 justify-between'>
         <div className='flex flex-row m-1 place-items-center rounded z-10'>
-          <button className=' rounded-lg text-white p-1 w-26' style={{fontSize: '10px'}} onClick={handleArtSort}>
+          <button className=' rounded-lg text-black p-1 w-26' style={{fontSize: '10px'}} onClick={handleArtSort}>
             Graphic Arts
           </button>
-          <GiPaintBrush onClick={handleArtSort} className='w-6 h-6 text-white' />
+          <GiPaintBrush onClick={handleArtSort} className='w-6 h-6 text-black' />
         </div>
         <div className='flex flex-row m-1 place-items-center rounded z-10'>
-          <button className='rounded-lg text-white p-1 w-26' style={{fontSize: '10px'}} onClick={handleHotChixSort}>
+          <button className='rounded-lg text-black p-1 w-26' style={{fontSize: '10px'}} onClick={handleHotChixSort}>
             "HotChix"
           </button>
-          <GiChicken onClick={handleHotChixSort} className='w-6 h-6 text-white' />
+          <GiChicken onClick={handleHotChixSort} className='w-6 h-6 text-black' />
         </div>
         <div className='flex flex-row m-1 place-items-center rounded z-10'>
-          <button className=' rounded-lg text-white p-1 w-26' style={{fontSize: '10px'}} onClick={handleMiscSort}>
+          <button className=' rounded-lg text-black p-1 w-26' style={{fontSize: '10px'}} onClick={handleMiscSort}>
             Misc
           </button>
-          <Square2StackIcon onClick={handleMiscSort} className='w-6 h-6 text-white' />
+          <Square2StackIcon onClick={handleMiscSort} className='w-6 h-6 text-black' />
         </div>
         <div className='flex flex-row m-1 place-items-center rounded z-10'>
-          <button className=' rounded-lg text-white p-1 w-26' style={{fontSize: '10px'}} onClick={handleReset}>
+          <button className=' rounded-lg text-black p-1 w-26' style={{fontSize: '10px'}} onClick={handleReset}>
             Reset
           </button>
-          <HiOutlineRefresh onClick={handleReset} className='w-6 h-6 text-white' />
+          <HiOutlineRefresh onClick={handleReset} className='w-6 h-6 text-black' />
         </div>
         
       </div>
