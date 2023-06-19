@@ -14,7 +14,8 @@ export default function AboutPage() {
                         className='border rounded-lg shadow-xl'
                     />    
                 </div>
-                <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>Hello, I{`'`}m Sharon. I am now retired and finally doing what I love - my Artwork. When I’m not holding a martini, I’m holding a paintbrush. Sharon My Creations is a collection of my original artwork of paintings, sculptures and more.</p>
+                <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>I have always been intrigued by bright colors and love to doodle. Recently I had one of my sun drawings aired twice on CBS Sunday Morning Show with Jane Pauley. It was quite an honor. I hope that you enjoy my creations as much as I enjoy creating them.</p>
+                
             </section>
             <div className='flex flex-row '>
                 <div className='text-xl font-semibold text-gray-600'>Creative Process</div> 
@@ -50,3 +51,5 @@ export default function AboutPage() {
         </div>
     )
 }
+
+// <p className='flex-col p-0 ml-3 lg:max-w-[50%] xs:max-w-[100%]'>Hello, I{`'`}m Sharon. I am now retired and finally doing what I love - my Artwork. When I’m not holding a martini, I’m holding a paintbrush. Sharon My Creations is a collection of my original artwork of paintings, sculptures and more.</p>
