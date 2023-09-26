@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }) {
       
       <div className='justify-center p-5 rounded-lg'> 
         <Image src={'/coming-soon.jpg'} width={500} height={500} alt='coming soon' className='rounded-lg'/>
+        <div className='text-3xl text-center pt-10'>Check back shortly  . . .</div>
       </div>
       
       
