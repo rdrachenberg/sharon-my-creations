@@ -7,7 +7,7 @@ import { CartProvider } from 'use-shopping-cart'
 const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
 export default function App({ Component, pageProps }) {
-  const isInMaintenance = true;
+  const isInMaintenance = false;
   const MainatenancePage = () => { 
     return(
       <div className='flex justify-center bg-slate-200 min-h-screen'>
